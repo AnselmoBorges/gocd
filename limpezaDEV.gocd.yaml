@@ -1,0 +1,29 @@
+format_version: 9
+environments:
+  ambiente_dev:
+    environment_variables:
+      DEPLOYMENT: Bigbig
+    pipelines:
+      - LimpezaDEV
+pipelines:
+  LimpezaDEV:
+    group: Bigbig
+    materials:
+      backend:
+        git: https://github.com/AnselmoBorges/gocd.git
+        branch: master
+    stages:
+      - Limpeza_logs_Hive:
+          clean_workspace: true  
+          jobs:
+            limpando:
+              resources:
+                - dev1
+                - dev2
+              tasks:
+                - exec:
+                    run_if: passed
+                    command: bash
+                    arguments:
+                      - -c 
+                      - "(find /var/log/kudu -mtime +7 -name \/*log* -delete)"
