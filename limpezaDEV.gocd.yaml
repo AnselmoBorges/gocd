@@ -19,7 +19,6 @@ pipelines:
             limpando:
               resources:
                 - dev1
-                - dev2
               tasks:
                 - exec:
                     run_if: passed
