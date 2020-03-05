@@ -26,4 +26,4 @@ pipelines:
                     command: bash
                     arguments:
                       - -c 
-                      - "(find /var/log/kudu -mtime +7 -name \/*log* -delete)"
+                      - "(find /var/log/kudu -mtime +7 -name /*log* -delete)"
